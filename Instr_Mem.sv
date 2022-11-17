@@ -10,7 +10,7 @@ logic [DATA_WIDTH-1:0] array [2**ADDRESS_WIDTH-1:0];
 
 initial begin
         $display ("Loading Instr_Mem.");
-        $readmemh("counter.mem", array); // not finished
+        $readmemh("counter.mem", array); 
 end;
 
 assign RD <= array [A];

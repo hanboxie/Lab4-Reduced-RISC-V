@@ -46,6 +46,40 @@ Main additions were:
 
 # Task 3 : Control Unit, Sign-extension Unit and Instruction Memory #
 
+To complete this task I had to complete two steps:
+* Creating a instruction memory module and proper memory file
+* Creating the Sign extension module
+* Creating Control Unit module
+
+## Step 1: Instrution memory module
+
+Similar to a ROM we create in Lab2
+
+![Instr_Mem](images/Instr_Mem.jpg)
+
+The instruction memory module is a ROM with 32 bit address width and 32 bit data width. Inside the module, instrution is stored.
+The instrction is 32 bits while the memory is byte width memory, so each instruction takes 4 addresses.
+The counter.mem file stores the instructions and was loaded into the memory module
+The counter that drives the address should increase by 4 every cycle.
+
+## Step 2: Sign extension module
+
+![Sign extension](images/Sign_extend.jpg)
+
+The module extend the Immdiate value in an instruction from 12 bits to 32 bits so that ALU module can process the data.
+20 bits of 1/0 is added in front of the immediate
+
+* note: in the top level, 12 bits should be selected to input in this module instead of the 32 bits instr.
+
+## Step 3: Control Unit module
+
+![Control Unit](images/Control_Unit.jpg)
+
+This module is like a decoder that outputs 5 one bit control signals.
+In this experiment, only two instruction is used. The five control signals change according to the opcode and funct3.
+
+![Instrcution Table](images/instruction_table.jpg)
+
 # Task 4: Top-Level Module, Testbench and Verification of Design #
 
 
