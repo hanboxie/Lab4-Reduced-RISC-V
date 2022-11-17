@@ -42,6 +42,8 @@ Main additions were:
 
 ## Step 2: ALU Module ##
 
+<img width="400" alt="image" src="https://user-images.githubusercontent.com/69715492/202443472-47b079b6-2d59-464f-95c2-3cd70399c744.png">
+
 # Task 3 : Control Unit, Sign-extension Unit and Instruction Memory #
 
 # Task 4: Top-Level Module, Testbench and Verification of Design #
