@@ -14,7 +14,8 @@ if (ALUctrl == 1'b0)
     SUM <= ALUop1 + ALUop2;
 if (ALUctrl == 1'b1)
     if (ALUop1 - ALUop2 == DATA_WIDTH{(1'b0)})
-        EQ <= 1'b0;
-    else
         EQ <= 1'b1;
+    else
+        EQ <= 1'b0;
 endmodule
+
