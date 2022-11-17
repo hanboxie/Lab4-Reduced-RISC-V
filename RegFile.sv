@@ -25,4 +25,9 @@ always_ff @(posedge clk)
         if(WE3 == 1'b1)
             regfile_array[AD3] <= WD3;
     end
+
+    //synchronous
+    a0 <= regfile_array[ADDRESS_WIDTH{1'b0}]
+
+
 endmodule
