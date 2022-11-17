@@ -19,7 +19,7 @@ logic [DATA_WIDTH-1:0] regfile_array [2**ADDRESS_WIDTH-1:0];
 RD1 <= regfile_array[AD1];
 RD2 <= regfile_array[AD2];
 
-//write ports should be synchronous
+//write ports should be synchronous (clocked)
 always_ff @(posedge clk)
     begin
         if(WE3 == 1'b1)
