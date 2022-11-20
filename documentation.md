@@ -57,8 +57,9 @@ Similar to a ROM we create in Lab2
 
 ![Instr_Mem](images/Instr_Mem.jpg)
 
-The instruction memory module is a ROM with 32 bit address width and 32 bit data width. Inside the module, instrution is stored.
+The instruction memory module is a ROM with 32 bit address width and 8 bit data width. Inside the module, instrution is stored.
 The instrction is 32 bits while the memory is byte width memory, so each instruction takes 4 addresses.
+The output combines 4 * 8 bits data, so that a 32 bits data is outputed
 The counter.mem file stores the instructions and was loaded into the memory module
 The counter that drives the address should increase by 4 every cycle.
 
