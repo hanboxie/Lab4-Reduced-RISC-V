@@ -5,6 +5,7 @@ module Sign_extend (
 );
 
 
+always @ *
 if (ImmSrc)
     if (instr[11])
         assign ImmOp = ({20'hFFFFF, instr});
@@ -12,6 +13,6 @@ if (ImmSrc)
         assign ImmOp = ({20'b0, instr});
 
 else
-    assign ImmOp = instr;
+    assign ImmOp = ({20'b0, instr});
 
 endmodule
