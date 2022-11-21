@@ -27,3 +27,5 @@ module PC_top #(
     .next_PC (next_PC),
     .ProgramCounter(ProgramCounter)
   );
+
+endmodule
