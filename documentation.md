@@ -70,7 +70,9 @@ The counter that drives the address should increase by 4 every cycle.
 The module extend the Immdiate value in an instruction from 12 bits to 32 bits so that ALU module can process the data.
 20 bits of 1/0 is added in front of the immediate
 
-* note: in the top level, 12 bits should be selected to input in this module instead of the 32 bits instr.
+* note: The immediate is located differently in bne and addi, so ImmSrc is used to determine how to extract immediate from instr.
+
+
 
 ## Step 3: Control Unit module
 
