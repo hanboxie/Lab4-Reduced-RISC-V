@@ -1,6 +1,5 @@
 module PC_top #(
-    parameter WIDTH = 32;
-
+    parameter WIDTH = 32
 )(
     input logic clk,
     input logic rst,

@@ -16,8 +16,12 @@ module RegFile #(
 logic [DATA_WIDTH-1:0] regfile_array [2**ADDRESS_WIDTH-1:0];
 
 //read ports should be asynchronous
-RD1 <= regfile_array[AD1];
-RD2 <= regfile_array[AD2];
+//RD1 <= regfile_array[AD1];
+//RD2 <= regfile_array[AD2];
+
+//try
+assign RD1 = regfile_array[AD1];
+assign RD2 = regfile_array[AD2];
 
 //write ports should be synchronous (clocked)
 always_ff @(posedge clk)
@@ -27,7 +31,9 @@ always_ff @(posedge clk)
     end
 
     //synchronous
-    a0 <= regfile_array[ADDRESS_WIDTH{1'b0}]
+    //a0 <= regfile_array[ADDRESS_WIDTH{1'b0}];
 
+//try
+assign a0 = regfile_array[ADDRESS_WIDTH{1'b0}]
 
 endmodule
