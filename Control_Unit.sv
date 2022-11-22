@@ -15,7 +15,7 @@ assign op = instr[6:0];
 assign funct3 = instr[14:12];
 
 always_latch @(instr) 
-    if (op == 7'b0010011 & funct3 == 3'b111) begin //addi
+    if (op == 7'b0010011 & funct3 == 3'b000) begin //addi
         RegWrite = 1;
         ALUctrl = 0;
         ALUsrc = 1;
