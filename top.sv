@@ -49,12 +49,34 @@ Control_Unit control_unit_instance(
     .ALUsrc (ALUsrc),
     .ImmSrc (ImmSrc),
     .PCsrc (PCsrc)
-)
+);
 
 Sign_extend sign_extend_instance(
     .ImmSrc (ImmSrc),
-    .
-)
+    .instr (instr),
+    .ImmOp (ImmOp)
+);
 
+RegFile reg_file_instance(
+    .clk (clk),
+    .AD1 (rs1),
+    .AD2 (rs2),
+    .AD3 (rd),
+    .WE3 (RegWrite),
+    .WD3 (ALUout),
+    .RD1 (ALUop1),
+    .RD2 (regOp2),
+    .a0 (a0)
+);
+
+assign ALUop2 = ALUsrc ? ImmOp : regOp2;
+
+ALU alu_instance(
+    .ALUctrl (ALUctrl),
+    .ALUop1 (ALUop1),
+    .ALUop2 (ALUop2),
+    .SUM (ALUout),
+    .EQ (EQ)
+);
 
 endmodule
