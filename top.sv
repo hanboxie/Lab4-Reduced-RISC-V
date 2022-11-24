@@ -33,6 +33,7 @@ PC_top pc_top_instance (
     .clk (clk),
     .rst (rst),
     .ImmOp(ImmOp),
+    .PCsrc (PCsrc),
     .PC (PC)
 );
 
@@ -44,7 +45,7 @@ Instr_Mem instr_mem_instance (
 Control_Unit control_unit_instance(
     .EQ (EQ),
     .instr (instr),
-    .RegWrite (Regwrite),
+    .RegWrite (RegWrite),
     .ALUctrl (ALUctrl),
     .ALUsrc (ALUsrc),
     .ImmSrc (ImmSrc),
