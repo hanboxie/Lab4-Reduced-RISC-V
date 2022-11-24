@@ -1,7 +1,8 @@
 module RegFile #(
     parameter ADDRESS_WIDTH = 16,
-              DATA_WIDTH = 32,
-              a0_WIDTH = 5
+             //a0_WIDTH = 5,
+              DATA_WIDTH = 32
+              
 ) (
     input logic clk,
     input logic [ADDRESS_WIDTH-1:0] AD1,
@@ -27,8 +28,8 @@ logic [DATA_WIDTH-1:0] regfile_array [2**ADDRESS_WIDTH-1:0];
 //write ports should be asynchronous
 always_ff @ *
     begin
-        RD1 <= regfile_array[AD1];
-        RD2 <= regfile_array[AD2];
+        RD1 = regfile_array[AD1];
+        RD2 = regfile_array[AD2];
     end
 
 always_ff @(posedge clk)
@@ -38,7 +39,7 @@ always_ff @(posedge clk)
     end
 
     //synchronous
-    assign a0 = regfile_array[{a0_WIDTH{5'b01010}}];
+    assign a0 = regfile_array[{16'b01010}];
 
 //try
 //a0 = regfile_array[ADDRESS_WIDTH{1'b0}]

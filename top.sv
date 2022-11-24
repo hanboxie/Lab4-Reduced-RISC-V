@@ -4,7 +4,7 @@ module top #(
 ) (
     input logic clk,
     input logic rst,
-    output logic a0
+    output logic [DATA_WIDTH-1:0] a0
 );
 
 //green 
@@ -20,14 +20,19 @@ logic ALUsrc;
 logic ImmSrc;
 logic PCsrc;
 //yellow
-logic ALUop1;
-logic ALUop2;
-logic regOp2;
-logic ALUout;
+logic [DATA_WIDTH-1:0] ALUop1;
+logic [DATA_WIDTH-1:0] ALUop2;
+logic [DATA_WIDTH-1:0] regOp2;
+logic [DATA_WIDTH-1:0] ALUout;
 logic EQ;
 //orange
 logic [DATA_WIDTH-1:0] ImmOp;
 logic [DATA_WIDTH-1:0] PC;
+
+assign rs1 = {{11'b0},instr[19:15]};
+assign rs2 = {{11'b0},instr[24:20]};
+assign rd = {{11'b0},instr[11:7]};
+
 
 PC_top pc_top_instance (
     .clk (clk),
