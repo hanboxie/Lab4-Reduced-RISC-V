@@ -7,7 +7,7 @@ module Instr_Mem # (
     output logic [OUT_WIDTH-1:0] RD
 );
 
-logic [DATA_WIDTH-1:0] array [2**ADDRESS_WIDTH-1:0];
+logic [DATA_WIDTH-1:0] array [2**16-1:0];
 
 initial begin
         $display ("Loading Instr_Mem.");

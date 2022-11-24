@@ -10,25 +10,46 @@ module Control_Unit (
 
 logic [6:0]         op;
 logic [2:0]         funct3;
+logic [1:0]         ALUOp;
+logic               Branch;
 
 assign op = instr[6:0];
 assign funct3 = instr[14:12];
 
-always_latch @(instr) 
-    if (op == 7'b0010011 & funct3 == 3'b000) begin //addi
-        RegWrite = 1;
-        ALUctrl = 0;
-        ALUsrc = 1;
-        ImmSrc = 1;
-        PCsrc = 0;
+always_comb begin
+    casez(op)
+    7'b0010011: begin
+        assign RegWrite = 1;
+        //ALUctrl = 0;
+        assign ALUsrc = 1;
+        assign ImmSrc = 1;
+        assign ALUOp = 2'b10;
+        assign Branch = 0;
+    end
+    7'b1100011: begin
+        assign RegWrite = 0;
+        //ALUctrl = 1;
+        assign ALUsrc = 0;
+        assign ImmSrc = 0;
+        assign ALUOp = 2'b01;
+        assign Branch = 1;
+    end
+    endcase
 
-end else if (op == 7'b1100011 & funct3 == 3'b001 & EQ == 0) begin  //bne
-        RegWrite = 0;
-        ALUctrl = 1;
-        ALUsrc = 0;
-        ImmSrc = 0;
-        PCsrc = 1;
+    casez(Branch && EQ == 0)
+
+    1'b1: assign PCsrc = 1;
+    0'b1: assign PCsrc = 0;
+
+    endcase
+
+    casez(ALUOp)
+    2'b00: assign ALUctrl = 1;
+    2'b01: assign ALUctrl = 0;
+    2'b10: if (funct3 == 000)
+            assign ALUctrl = 1;
+           else assign ALUctrl = 0;
+    endcase
 end
-
 
 endmodule
