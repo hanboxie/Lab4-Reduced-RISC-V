@@ -36,10 +36,13 @@ always_comb begin
     end
     endcase
 
-    casez(Branch && EQ == 0)
+    casez(Branch)
 
-    1'b1: assign PCsrc = 1;
-    0'b1: assign PCsrc = 0;
+    1'b1: if (EQ)
+            assign PCsrc = 0;
+          else
+            assign PCsrc = 1;
+    0'b0: assign PCsrc = 0;
 
     endcase
 

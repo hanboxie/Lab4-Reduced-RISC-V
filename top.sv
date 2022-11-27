@@ -34,6 +34,7 @@ assign rs2 = {{11'b0},instr[24:20]};
 assign rd = {{11'b0},instr[11:7]};
 
 
+
 PC_top pc_top_instance (
     .clk (clk),
     .rst (rst),

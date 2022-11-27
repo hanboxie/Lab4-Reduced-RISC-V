@@ -129,11 +129,9 @@ VL_INLINE_OPT void Vtop___024root___sequent__TOP__2(Vtop___024root* vlSelf) {
                                 & (0U == (vlSelf->top__DOT__ALUop1 
                                           - vlSelf->top__DOT__ALUop2)));
     }
-    if (((IData)(vlSelf->top__DOT__control_unit_instance__DOT__Branch) 
-         & (~ (IData)(vlSelf->top__DOT__EQ)))) {
-        vlSelf->top__DOT__PCsrc = 1U;
-    } else if (((IData)(vlSelf->top__DOT__control_unit_instance__DOT__Branch) 
-                & (~ (IData)(vlSelf->top__DOT__EQ)))) {
+    if (vlSelf->top__DOT__control_unit_instance__DOT__Branch) {
+        vlSelf->top__DOT__PCsrc = (1U & (~ (IData)(vlSelf->top__DOT__EQ)));
+    } else if ((1U & (~ (IData)(vlSelf->top__DOT__control_unit_instance__DOT__Branch)))) {
         vlSelf->top__DOT__PCsrc = 0U;
     }
     vlSelf->top__DOT__pc_top_instance__DOT__next_PC 

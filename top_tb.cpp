@@ -3,7 +3,7 @@
 #include "Vtop.h"
 
 #include "vbuddy.cpp"     // include vbuddy code
-#define MAX_SIM_CYC 1000000
+#define MAX_SIM_CYC 1000
 
 int main(int argc, char **argv, char **env) {
   int simcyc;     // simulation clock count
@@ -21,11 +21,11 @@ int main(int argc, char **argv, char **env) {
   // init Vbuddy
   if (vbdOpen()!=1) return(-1);
   vbdHeader("L4: RISC-V");
-  vbdSetMode(1);        // Flag mode set to one-shot
 
   // initialize simulation inputs
   top->clk = 1;
   top->rst = 0;
+
 
   // run simulation for MAX_SIM_CYC clock cycles
   for (simcyc=0; simcyc<MAX_SIM_CYC; simcyc++) {
@@ -37,8 +37,11 @@ int main(int argc, char **argv, char **env) {
     }
     
     // plot ROM output and print cycle count
-    vbdHex(1, top->a0 & 0xF);
-    vbdBar(top->a0 & 0xFF);
+    vbdHex(4, (int(top->a0) >> 16) & 0xF);
+    vbdHex(3, (int(top->a0) >> 8) & 0xF);
+    vbdHex(2, (int(top->a0) >> 4) & 0xF);
+    vbdHex(1, int(top->a0) & 0xF);
+    vbdCycle(simcyc+1);
 
     // either simulation finished, or 'q' is pressed
     if ((Verilated::gotFinish()) || (vbdGetkey()=='q')) 
