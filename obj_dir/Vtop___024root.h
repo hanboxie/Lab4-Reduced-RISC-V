@@ -33,6 +33,7 @@ class Vtop___024root final : public VerilatedModule {
     IData/*31:0*/ top__DOT__ImmOp;
     IData/*31:0*/ top__DOT__PC;
     IData/*31:0*/ top__DOT__pc_top_instance__DOT__next_PC;
+    IData/*21:0*/ top__DOT__control_unit_instance__DOT__dummyWire;
     VlUnpacked<CData/*7:0*/, 65536> top__DOT__instr_mem_instance__DOT__array;
     VlUnpacked<IData/*31:0*/, 65536> top__DOT__reg_file_instance__DOT__regfile_array;
     VlUnpacked<CData/*0:0*/, 2> __Vm_traceActivity;

@@ -12,12 +12,18 @@ logic [6:0]         op;
 logic [2:0]         funct3;
 logic [1:0]         ALUOp;
 logic               Branch;
+logic [21:0] dummyWire; //need to ensure all bits of signal are used [31:15, 11:7] 31-15+1=17; 11-7+1=5; 17+5=0
 
 assign op = instr[6:0];
 assign funct3 = instr[14:12];
 
+assign dummyWire = {instr[31:15], instr[11:7]};
+
 always_comb begin
     casez(op)
+    default: begin
+        assign dummyWire = 22'b0;
+    end
     7'b0010011: begin
         assign RegWrite = 1;
         //ALUctrl = 0;
@@ -47,6 +53,9 @@ always_comb begin
     endcase
 
     casez(ALUOp)
+    default: begin
+        assign dummyWire = 22'b0;
+    end
     2'b00: assign ALUctrl = 1;
     2'b01: assign ALUctrl = 0;
     2'b10: if (funct3 == 000)
